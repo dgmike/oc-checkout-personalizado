@@ -18,7 +18,7 @@ endif
 	echo ${VERSION} '('${DATE} 'by '${USER}')' > Changelog
 	stepup notes | sed "s/^---$$//" >> Changelog
 	echo >> Changelog
-	stepup changelog >> Changelog
+	stepup changelog | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" >> Changelog
 	git add Changelog
 	git commit -m 'Updating changelog'
 	sed -i 's,<version>.*</version>,<version>${VERSION}</version>,' install.xml
