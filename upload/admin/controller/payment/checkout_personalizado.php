@@ -12,6 +12,8 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
     }
 
     public function index() {
+        $this->setData('action', $this->linkTo('payment/checkout_personalizado'));
+
         $this->view('payment/checkout_personalizado');
     }
 
@@ -30,6 +32,8 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
         $this->setData('footer', $this->load->controller('common/footer'));
     }
 
+    private function linkTo($uri) {
+        return $this->url->link($uri, 'token=' . $this->session->data['token'], true)
     }
 
     private function view($template) {
