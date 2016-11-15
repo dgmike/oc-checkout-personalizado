@@ -27,6 +27,8 @@ endif
 	git add install.xml
 	git commit -m "dump version ${VERSION}"
 	stepup version create --no-editor
+	git push origin master
+	git push --tags
 
 package:
 	zip -v -r checkoutp-${VERSION}.ocmod.zip * -x '.git' -x 'Makefile' -x '.stepuprc' -x 'checkoutp*.zip'
