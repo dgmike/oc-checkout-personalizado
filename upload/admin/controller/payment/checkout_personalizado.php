@@ -5,6 +5,9 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
 
     public function __construct($registry) {
         parent::__construct($registry);
+
+        $this->load->language('payment/checkout_personalizado');
+        $this->document->setTitle($this->language->get('heading_title'));
         $this->defaultData();
     }
 
@@ -13,7 +16,6 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
     }
 
     private function defaultData() {
-        $this->load->language('payment/checkout_personalizado');
 
         $this->data['heading_title'] = $this->language->get('heading_title');
         $this->data['breadcrumbs'] = array();
