@@ -15,5 +15,5 @@ endif
 	@echo "generating version... ${VERSION}"
 	sed -i 's,<version>.*</version>,<version>${VERSION}</version>,' install.xml
 	git add install.xml
-	git commit -m "dump version"
+	git commit -m "dump version ${VERSION}"
 	stepup version create --no-editor
