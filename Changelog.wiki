@@ -1,3 +1,13 @@
+== 0.8.0 Nov/15 2016 17:40 -0200 by Michael Granados ==
+
+Changes:
+
+  - Changelog as wiki format
+
+Features:
+
+  - adicionando licensa MIT
+
 == 0.7.0 (Nov/15 2016 16:48 -0200 by Michael Granados) ==
 
 Features:
