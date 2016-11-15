@@ -30,13 +30,15 @@ endif
 package:
 	zip -v -r checkoutp-${VERSION}.ocmod.zip * -x '.git' -x 'Makefile' -x '.stepuprc' -x 'checkoutp*.zip'
 
-check: $(CHECK_FILES)
+check: checking $(CHECK_FILES)
+
+checking: ; @echo " checking files"
 
 .PHONY: $(CHECK_FILES)
 $(CHECK_FILES) :
-	@echo -n ' checking' $@ ...
+	@echo -ne '    \033[0;34mchecking\033[0m' $@
 	@php -l $@ > /dev/null 2>&1
-	@echo ' OK'
+	@echo -e \\r '  \033[1;32m[success]\033[0m '
 
 clean:
 	rm -v *.ocmod.zip
