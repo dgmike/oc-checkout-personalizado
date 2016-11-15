@@ -18,7 +18,10 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
                 'tab_geral', 'tab_api', 'tab_situacoes', 'tab_finalizacao',
             )
         );
+
         $this->breadcrumb('text_home', 'common/dashboard');
+        $this->breadcrumb('text_payment', 'extension/payment');
+        $this->breadcrumb('heading_title', 'payment/checkout_personalizado');
 
         $this->setData('action', $this->linkTo('payment/checkout_personalizado'));
 
