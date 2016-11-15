@@ -12,19 +12,26 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
     }
 
     public function index() {
+        $this->setData('text_edit');
+        $this->setData('tab_geral');
+
         $this->setData('action', $this->linkTo('payment/checkout_personalizado'));
 
         $this->view('payment/checkout_personalizado');
     }
 
-    private function setData($key, $value) {
+    private function setData($key, $value = null) {
+        if (1 === func_num_args()) {
+            $this->data[$key] = $this->language->get($key);
+            return;
+        }
         $this->data[$key] = $value;
     }
 
     private function defaultData() {
         $this->setData('token', $this->session->data['token']);
 
-        $this->setData('heading_title', $this->language->get('heading_title'));
+        $this->setData('heading_title');
         $this->setData('breadcrumbs', array());
 
         $this->setData('header', $this->load->controller('common/header'));
