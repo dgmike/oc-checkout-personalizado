@@ -9,6 +9,18 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
             ->breadcrumbsFor('index')
             ->setDataFor('index');
 
+        $this->load->model('localisation/geo_zone');
+        $this->setData(
+            'geo_zones',
+            $this->model_localisation_geo_zone->getGeoZones()
+        );
+
+        $this->load->model('localisation/order_status');
+        $this->setData(
+            'order_statuses',
+            $this->model_localisation_order_status->getOrderStatuses()
+        );
+
         $this->view('payment/checkout_personalizado');
     }
 

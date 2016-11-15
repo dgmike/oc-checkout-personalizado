@@ -23,14 +23,18 @@
       </div>
       <div class="panel-body">
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-checkout-personalizado" class="form-horizontal">
+
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-geral" data-toggle="tab"><?php echo $tab_geral; ?></a></li>
             <li><a href="#tab-api" data-toggle="tab"><?php echo $tab_api; ?></a></li>
             <li><a href="#tab-situacoes" data-toggle="tab"><?php echo $tab_situacoes; ?></a></li>
             <li><a href="#tab-finalizacao" data-toggle="tab"><?php echo $tab_finalizacao; ?></a></li>
           </ul>
+
           <div class="tab-content">
+
             <div class="tab-pane active" id="tab-geral">
+
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-total">
                   <span data-toggle="tooltip" title="Valor mínimo que o pedido deve alcançar para que a forma de pagamento por boleto bancário seja habilitada. Deixe em branco se não houver valor mínimo.">Total mínimo</span>
@@ -39,6 +43,29 @@
                   <input type="text" name="checkout_personalizado_total" value="" placeholder="" id="input-total" class="form-control" />
                 </div>
               </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-geo-zone">Região Geográfica</label>
+                <div class="col-sm-10">
+                  <select name="mundipagg_boleto_geo_zone_id" id="input-geo-zone" class="form-control">
+                    <option value="0"><?php echo $text_all_zones; ?></option>
+                    <?php foreach ($geo_zones as $geo_zone) { ?>
+                    <option value="<?php echo $geo_zone['geo_zone_id']; ?>"><?php echo $geo_zone['name']; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-status">Situação</label>
+                <div class="col-sm-10">
+                  <select name="mundipagg_boleto_status" id="input-status" class="form-control">
+                    <option value="1" selected="selected">Habilitado</option>
+                    <option value="0">Desabilitado</option>
+                  </select>
+                </div>
+              </div>
+
             </div>
           </div>
         </form>
