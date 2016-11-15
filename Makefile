@@ -17,3 +17,6 @@ endif
 	git add install.xml
 	git commit -m "dump version ${VERSION}"
 	stepup version create --no-editor
+
+package:
+	zip -v -r checkoutp-${VERSION}.zip * -x '.git' -x 'Makefile' -x '.stepuprc' -x 'checkoutp*.zip'
