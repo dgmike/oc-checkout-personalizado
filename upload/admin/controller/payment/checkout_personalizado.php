@@ -1,6 +1,6 @@
 <?php
 
-class ControllerCheckoutPersonalizado extends Controller {
+class ControllerPaymentCheckoutPersonalizado extends Controller {
     public function index() {
         $this->load->language('payment/checkout_personalizado');
 
