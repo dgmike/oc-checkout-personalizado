@@ -3,29 +3,19 @@
 class ControllerPaymentCheckoutPersonalizado extends Controller {
     public $data = array();
 
-    public function __construct($registry) {
-        parent::__construct($registry);
-
-        $this->load->language('payment/checkout_personalizado');
-        $this->document->setTitle($this->language->get('heading_title'));
-        $this->defaultData();
-    }
-
     public function index() {
-        $this->setData(
-            array(
-                'text_edit',
-                'tab_geral', 'tab_api', 'tab_situacoes', 'tab_finalizacao',
-            )
-        );
-
-        $this->breadcrumb('text_home', 'common/dashboard');
-        $this->breadcrumb('text_payment', 'extension/payment');
-        $this->breadcrumb('heading_title', 'payment/checkout_personalizado');
-
-        $this->setData('action', $this->linkTo('payment/checkout_personalizado'));
+        $this
+            ->setUp()
+            ->breadcrumbsFor('index')
+            ->setDataFor('index');
 
         $this->view('payment/checkout_personalizado');
+    }
+
+    private function setUp() {
+        $this->defaultData();
+        $this->document->setTitle($this->language->get('heading_title'));
+        return $this;
     }
 
     private function setData($key, $value = null) {
@@ -41,23 +31,51 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
         $this->data[$key] = $value;
     }
 
+    private function setDataFor($action) {
+        switch ($action) {
+            case 'index':
+                $this->setData(
+                    array(
+                        'text_edit',
+                        'tab_geral', 'tab_api', 'tab_situacoes', 'tab_finalizacao',
+                    )
+                );
+                $this->setData('action', $this->linkTo('payment/checkout_personalizado'));
+                break;
+        }
+        return $this;
+    }
+
     private function breadcrumb($title, $uri) {
         $breadcrumb = array(
             'href' => $this->linkTo($uri),
             'text' => $this->language->get($title),
         );
         array_push($this->data['breadcrumbs'], $breadcrumb);
+        return $this;
+    }
+
+    private function breadcrumbsFor($page) {
+        switch ($action) {
+            case 'index':
+                $this->breadcrumb('text_home', 'common/dashboard')
+                     ->breadcrumb('text_payment', 'extension/payment')
+                     ->breadcrumb('heading_title', 'payment/checkout_personalizado');
+                break;
+        }
+        return $this;
     }
 
     private function defaultData() {
-        $this->setData('token', $this->session->data['token']);
-
-        $this->setData('heading_title');
-        $this->setData('breadcrumbs', array());
-
         $this->setData('header', $this->load->controller('common/header'));
         $this->setData('column_left', $this->load->controller('common/column_left'));
         $this->setData('footer', $this->load->controller('common/footer'));
+        $this->setData('token', $this->session->data['token']);
+
+        $this->load->language('payment/checkout_personalizado');
+
+        $this->setData('heading_title');
+        $this->setData('breadcrumbs', array());
     }
 
     private function linkTo($uri) {
