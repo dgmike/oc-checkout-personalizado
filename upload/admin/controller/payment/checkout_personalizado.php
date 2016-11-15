@@ -15,14 +15,20 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
         $this->view('payment/checkout_personalizado');
     }
 
+    private function setData($key, $value) {
+        $this->data[$key] = $value;
+    }
+
     private function defaultData() {
 
-        $this->data['heading_title'] = $this->language->get('heading_title');
-        $this->data['breadcrumbs'] = array();
+        $this->setData('heading_title', $this->language->get('heading_title'));
+        $this->setData('breadcrumbs', array());
 
-        $this->data['header'] = $this->load->controller('common/header');
-        $this->data['column_left'] = $this->load->controller('common/column_left');
-        $this->data['footer'] = $this->load->controller('common/footer');
+        $this->setData('header', $this->load->controller('common/header'));
+        $this->setData('column_left', $this->load->controller('common/column_left'));
+        $this->setData('footer', $this->load->controller('common/footer'));
+    }
+
     }
 
     private function view($template) {
