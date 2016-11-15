@@ -1,0 +1,28 @@
+0.3.0 (Nov/15 2016 13:06 -0200 by Michael Granados)
+
+Bugfixes:
+
+  - nome correto do pacote
+
+Features:
+
+  - tarefa de limpeza do projeto
+  - build cria arquivo com alteracoes
+
+[0;33m0.2.0 (Nov/15 2016 12:31 -0200 by Michael Granados)[0m
+
+Features:
+
+  - controller administrativo
+
+[0;33m0.1.0 (Nov/15 2016 12:12 -0200 by Michael Granados)[0m
+
+Features:
+
+  - empacotamento do plugin
+
+[0;33m0.0.1 (Nov/15 2016 10:29 -0200 by Michael Granados)[0m
+
+Changes:
+
+  - informacao de versao no dump de versao
