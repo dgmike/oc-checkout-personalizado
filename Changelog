@@ -1,3 +1,17 @@
+0.5.0 (Nov/15 2016 15:18 -0200 by Michael Granados)
+
+Changes:
+
+  - refactore do controller administrativo
+
+Bugfixes:
+
+  - ortografia em breadcrumbs
+
+Features:
+
+  - formulario com abas na tela de administracao
+
 0.4.2 (Nov/15 2016 13:44 -0200 by Michael Granados)
 
 Bugfixes:
