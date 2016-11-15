@@ -3,7 +3,7 @@ ifdef VERSION
 STEPUP_HAS_NOTES := $(shell test `stepup notes | wc -l` -gt 1 && echo true)
 endif
 
-default: build
+default: build package
 
 build:
 ifndef VERSION
