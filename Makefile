@@ -34,7 +34,9 @@ check: $(CHECK_FILES)
 
 .PHONY: $(CHECK_FILES)
 $(CHECK_FILES) :
+	@echo -n ' checking' $@ ...
 	@php -l $@ > /dev/null 2>&1
+	@echo ' OK'
 
 clean:
 	rm -v *.ocmod.zip
