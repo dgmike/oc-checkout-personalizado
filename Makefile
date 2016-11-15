@@ -2,6 +2,7 @@ VERSION := $(shell which stepup > /dev/null && stepup version --next-release --f
 USER := $(shell git config user.name)
 DATE := $(shell date +'%b/%d %Y %H:%M %z')
 CHECK_FILES := $(shell find -type f -name '*.php' -or -name '*.tpl')
+CHANGELOG_FILE := Changelog.wiki
 ifdef VERSION
 STEPUP_HAS_NOTES := $(shell test `stepup notes | wc -l` -gt 1 && echo true)
 endif
@@ -16,11 +17,11 @@ ifndef STEPUP_HAS_NOTES
 	$(error "no notes found")
 endif
 	@echo "generating version... ${VERSION}"
-	echo ${VERSION} '('${DATE} 'by '${USER}')' > Changelog
-	stepup notes | sed "s/^---$$//" >> Changelog
-	echo >> Changelog
-	stepup changelog | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" >> Changelog
-	git add Changelog
+	echo '==' ${VERSION} ${DATE} 'by '${USER} '==' > ${CHANGELOG_FILE}
+	stepup notes | sed "s/^---$$//" >> ${CHANGELOG_FILE}
+	echo >> ${CHANGELOG_FILE}
+	stepup changelog -f wiki >> ${CHANGELOG_FILE}
+	git add ${CHANGELOG_FILE}
 	git commit -m 'Updating changelog'
 	sed -i 's,<version>.*</version>,<version>${VERSION}</version>,' install.xml
 	git add install.xml
