@@ -30,4 +30,4 @@ package:
 	zip -v -r checkoutp-${VERSION}.ocmod.zip * -x '.git' -x 'Makefile' -x '.stepuprc' -x 'checkoutp*.zip'
 
 clean:
-	rm *.ocmod.zip
+	rm -v *.ocmod.zip
