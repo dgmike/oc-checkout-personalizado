@@ -33,7 +33,7 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
     }
 
     private function linkTo($uri) {
-        return $this->url->link($uri, 'token=' . $this->session->data['token'], true)
+        return $this->url->link($uri, 'token=' . $this->session->data['token'], true);
     }
 
     private function view($template) {
