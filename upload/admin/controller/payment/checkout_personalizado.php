@@ -12,11 +12,12 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
     }
 
     public function index() {
-        $this->setData('text_edit');
-        $this->setData('tab_geral');
-        $this->setData('tab_api');
-        $this->setData('tab_situacoes');
-        $this->setData('tab_finalizacao');
+        $this->setData(
+            array(
+                'text_edit',
+                'tab_geral', 'tab_api', 'tab_situacoes', 'tab_finalizacao',
+            )
+        );
 
         $this->setData('action', $this->linkTo('payment/checkout_personalizado'));
 
@@ -25,7 +26,12 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
 
     private function setData($key, $value = null) {
         if (1 === func_num_args()) {
-            $this->data[$key] = $this->language->get($key);
+            if (!is_array($key)) {
+                $key = array($key);
+            }
+            foreach ($key as $item) {
+                $this->data[$item] = $this->language->get($item);
+            }
             return;
         }
         $this->data[$key] = $value;
