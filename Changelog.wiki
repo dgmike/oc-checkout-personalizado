@@ -1,12 +1,23 @@
-== 0.8.0 Nov/15 2016 17:40 -0200 by Michael Granados ==
+== 0.9.0 (Nov/15 2016 18:05 -0200 by Michael Granados) ==
 
 Changes:
 
-  - Changelog as wiki format
+  - corrigindo formato de titulo de versao no changelog
+  - ao realizar um build, a tarefa atualiza o repositorio
 
 Features:
 
-  - adicionando licensa MIT
+  - adicionando breadcrumbs
+
+== 0.8.0 (Nov/15 2016 17:40 -0200 by Michael Granados) ==
+
+Changes:
+
+* Changelog as wiki format
+
+Features:
+
+* adicionando licensa MIT
 
 == 0.7.0 (Nov/15 2016 16:48 -0200 by Michael Granados) ==
 
