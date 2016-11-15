@@ -19,4 +19,4 @@ endif
 	stepup version create --no-editor
 
 package:
-	zip -v -r checkoutp-${VERSION}.zip * -x '.git' -x 'Makefile' -x '.stepuprc' -x 'checkoutp*.zip'
+	zip -v -r checkoutp-${VERSION}.ocmod.zip * -x '.git' -x 'Makefile' -x '.stepuprc' -x 'checkoutp*.zip'
