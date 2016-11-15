@@ -18,6 +18,7 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
                 'tab_geral', 'tab_api', 'tab_situacoes', 'tab_finalizacao',
             )
         );
+        $this->breadcrumb('text_home', 'common/dashboard');
 
         $this->setData('action', $this->linkTo('payment/checkout_personalizado'));
 
@@ -35,6 +36,14 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
             return;
         }
         $this->data[$key] = $value;
+    }
+
+    private function breadcrumb($title, $uri) {
+        $breadcrumb = array(
+            'href' => $this->linkTo($uri),
+            'text' => $this->language->get($title),
+        );
+        array_push($this->data['breadcrumbs'], $breadcrumb);
     }
 
     private function defaultData() {
