@@ -1,95 +1,95 @@
-0.7.0 (Nov/15 2016 16:48 -0200 by Michael Granados)
+== 0.7.0 (Nov/15 2016 16:48 -0200 by Michael Granados) ==
 
 Features:
 
-  - tarefa check mais interativa
+* tarefa check mais interativa
 
-0.6.1 (Nov/15 2016 16:37 -0200 by Michael Granados)
+== 0.6.1 (Nov/15 2016 16:37 -0200 by Michael Granados) ==
 
 Changes:
 
-  - melhor saida da tarefa make check
+* melhor saida da tarefa make check
 
-0.6.0 (Nov/15 2016 16:34 -0200 by Michael Granados)
-
-Changes:
-
-  - carregamento de variaveis de linguagem mais sucinta
-
-Features:
-
-  - criando abas a partir do arquivo de linguagem
-  - checagem de sintaxe antes de gerar uma nova versao
-
-0.5.2 (Nov/15 2016 15:28 -0200 by Michael Granados)
+== 0.6.0 (Nov/15 2016 16:34 -0200 by Michael Granados) ==
 
 Changes:
 
-  - usando pt-br no lugar de portuguese-br
+* carregamento de variaveis de linguagem mais sucinta
 
-0.5.1 (Nov/15 2016 15:21 -0200 by Michael Granados)
+Features:
 
-Bugfixes:
+* criando abas a partir do arquivo de linguagem
+* checagem de sintaxe antes de gerar uma nova versao
 
-  - controller nao carrega
-
-0.5.0 (Nov/15 2016 15:18 -0200 by Michael Granados)
+== 0.5.2 (Nov/15 2016 15:28 -0200 by Michael Granados) ==
 
 Changes:
 
-  - refactore do controller administrativo
+* usando pt-br no lugar de portuguese-br
+
+== 0.5.1 (Nov/15 2016 15:21 -0200 by Michael Granados) ==
 
 Bugfixes:
 
-  - ortografia em breadcrumbs
+* controller nao carrega
 
-Features:
-
-  - formulario com abas na tela de administracao
-
-0.4.2 (Nov/15 2016 13:44 -0200 by Michael Granados)
-
-Bugfixes:
-
-  - correcao de chamadas e denominacoes
-
-0.4.1 (Nov/15 2016 13:34 -0200 by Michael Granados)
-
-Bugfixes:
-
-  - adicionando partes padroes de template
-
-0.4.0 (Nov/15 2016 13:25 -0200 by Michael Granados)
-
-Features:
-
-  - criando visao da admin
-
-0.3.0 (Nov/15 2016 13:06 -0200 by Michael Granados)
-
-Bugfixes:
-
-  - nome correto do pacote
-
-Features:
-
-  - tarefa de limpeza do projeto
-  - build cria arquivo com alteracoes
-
-0.2.0 (Nov/15 2016 12:31 -0200 by Michael Granados)
-
-Features:
-
-  - controller administrativo
-
-0.1.0 (Nov/15 2016 12:12 -0200 by Michael Granados)
-
-Features:
-
-  - empacotamento do plugin
-
-0.0.1 (Nov/15 2016 10:29 -0200 by Michael Granados)
+== 0.5.0 (Nov/15 2016 15:18 -0200 by Michael Granados) ==
 
 Changes:
 
-  - informacao de versao no dump de versao
+* refactore do controller administrativo
+
+Bugfixes:
+
+* ortografia em breadcrumbs
+
+Features:
+
+* formulario com abas na tela de administracao
+
+== 0.4.2 (Nov/15 2016 13:44 -0200 by Michael Granados) ==
+
+Bugfixes:
+
+* correcao de chamadas e denominacoes
+
+== 0.4.1 (Nov/15 2016 13:34 -0200 by Michael Granados) ==
+
+Bugfixes:
+
+* adicionando partes padroes de template
+
+== 0.4.0 (Nov/15 2016 13:25 -0200 by Michael Granados) ==
+
+Features:
+
+* criando visao da admin
+
+== 0.3.0 (Nov/15 2016 13:06 -0200 by Michael Granados) ==
+
+Bugfixes:
+
+* nome correto do pacote
+
+Features:
+
+* tarefa de limpeza do projeto
+* build cria arquivo com alteracoes
+
+== 0.2.0 (Nov/15 2016 12:31 -0200 by Michael Granados) ==
+
+Features:
+
+* controller administrativo
+
+== 0.1.0 (Nov/15 2016 12:12 -0200 by Michael Granados) ==
+
+Features:
+
+* empacotamento do plugin
+
+== 0.0.1 (Nov/15 2016 10:29 -0200 by Michael Granados) ==
+
+Changes:
+
+* informacao de versao no dump de versao
