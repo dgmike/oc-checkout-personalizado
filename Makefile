@@ -1,11 +1,12 @@
 VERSION := $(shell which stepup > /dev/null && stepup version --next-release --format mvn)
 USER := $(shell git config user.name)
 DATE := $(shell date +'%b/%d %Y %H:%M %z')
+CHECK_FILES := $(shell find -type f -name '*.php' -or -name '*.tpl')
 ifdef VERSION
 STEPUP_HAS_NOTES := $(shell test `stepup notes | wc -l` -gt 1 && echo true)
 endif
 
-default: build package
+default: clean check build package
 
 build:
 ifndef VERSION
@@ -28,6 +29,12 @@ endif
 
 package:
 	zip -v -r checkoutp-${VERSION}.ocmod.zip * -x '.git' -x 'Makefile' -x '.stepuprc' -x 'checkoutp*.zip'
+
+check: $(CHECK_FILES)
+
+.PHONY: $(CHECK_FILES)
+$(CHECK_FILES) :
+	@php -l $@ > /dev/null 2>&1
 
 clean:
 	rm -v *.ocmod.zip
