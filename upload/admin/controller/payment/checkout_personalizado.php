@@ -20,6 +20,7 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
     }
 
     private function defaultData() {
+        $this->setData('token', $this->session->data['token']);
 
         $this->setData('heading_title', $this->language->get('heading_title'));
         $this->setData('breadcrumbs', array());
