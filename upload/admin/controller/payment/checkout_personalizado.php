@@ -14,6 +14,9 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
     public function index() {
         $this->setData('text_edit');
         $this->setData('tab_geral');
+        $this->setData('tab_api');
+        $this->setData('tab_situacoes');
+        $this->setData('tab_finalizacao');
 
         $this->setData('action', $this->linkTo('payment/checkout_personalizado'));
 

@@ -25,6 +25,9 @@
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-checkout-personalizado" class="form-horizontal">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-geral" data-toggle="tab"><?php echo $tab_geral; ?></a></li>
+            <li><a href="#tab-api" data-toggle="tab"><?php echo $tab_api; ?></a></li>
+            <li><a href="#tab-situacoes" data-toggle="tab"><?php echo $tab_situacoes; ?></a></li>
+            <li><a href="#tab-finalizacao" data-toggle="tab"><?php echo $tab_finalizacao; ?></a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-geral">
