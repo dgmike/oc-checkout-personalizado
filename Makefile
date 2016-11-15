@@ -17,7 +17,7 @@ ifndef STEPUP_HAS_NOTES
 	$(error "no notes found")
 endif
 	@echo "generating version... ${VERSION}"
-	echo '==' ${VERSION} ${DATE} 'by '${USER} '==' > ${CHANGELOG_FILE}
+	echo '==' ${VERSION} '('${DATE} 'by '${USER}') ==' > ${CHANGELOG_FILE}
 	stepup notes | sed "s/^---$$//" >> ${CHANGELOG_FILE}
 	echo >> ${CHANGELOG_FILE}
 	stepup changelog -f wiki >> ${CHANGELOG_FILE}
