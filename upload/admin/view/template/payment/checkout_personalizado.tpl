@@ -37,15 +37,15 @@
 
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-total">
-                  <span data-toggle="tooltip" title="Valor mínimo que o pedido deve alcançar para que a forma de pagamento por boleto bancário seja habilitada. Deixe em branco se não houver valor mínimo.">Total mínimo</span>
+                  <span data-toggle="tooltip" title="<?php echo $help_total; ?>"><?php echo $entry_total; ?></span>
                 </label>
                 <div class="col-sm-10">
-                  <input type="text" name="checkout_personalizado_total" value="" placeholder="" id="input-total" class="form-control" />
+                  <input type="text" name="checkout_personalizado_total" value="" placeholder="<?php echo $entry_total ?>" id="input-total" class="form-control" />
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-geo-zone">Região Geográfica</label>
+                <label class="col-sm-2 control-label" for="input-geo-zone"><?php echo $entry_geo_zone ?></label>
                 <div class="col-sm-10">
                   <select name="mundipagg_boleto_geo_zone_id" id="input-geo-zone" class="form-control">
                     <option value="0"><?php echo $text_all_zones; ?></option>
@@ -57,16 +57,33 @@
               </div>
 
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-status">Situação</label>
+                <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status ?></label>
                 <div class="col-sm-10">
                   <select name="mundipagg_boleto_status" id="input-status" class="form-control">
-                    <option value="1" selected="selected">Habilitado</option>
-                    <option value="0">Desabilitado</option>
+                    <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                    <option value="0"><?php echo $text_disabled; ?></option>
                   </select>
                 </div>
               </div>
 
-            </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="mundipagg_boleto_sort_order" value="" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
+                </div>
+              </div>
+
+            </div><!-- / #tab-geral -->
+
+            <div class="tab-pane" id="tab-api">
+            </div><!-- / #tab-api -->
+
+            <div class="tab-pane" id="tab-situacoes">
+            </div><!-- / #tab-situacoes -->
+
+            <div class="tab-pane" id="tab-finalizacao">
+            </div><!-- / #tab-finalizacao -->
+
           </div>
         </form>
       </div>

@@ -50,6 +50,11 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
                     array(
                         'text_edit',
                         'tab_geral', 'tab_api', 'tab_situacoes', 'tab_finalizacao',
+
+                        'entry_total', 'help_total',
+                        'entry_geo_zone', 'text_all_zones',
+                        'entry_status', 'text_enabled', 'text_disabled',
+                        'entry_sort_order',
                     )
                 );
                 $this->setData('action', $this->linkTo('payment/checkout_personalizado'));
@@ -67,7 +72,7 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
         return $this;
     }
 
-    private function breadcrumbsFor($page) {
+    private function breadcrumbsFor($action) {
         switch ($action) {
             case 'index':
                 $this->breadcrumb('text_home', 'common/dashboard')
