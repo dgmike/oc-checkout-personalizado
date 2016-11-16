@@ -1,9 +1,16 @@
+== 0.13.0 (Nov/16 2016 08:38 -0200 by Michael Granados) ==
+
+Features:
+
+  - persistencia no banco de dados
+  - exibicao dos dados no formulario administrativo
+
 == 0.12.0 (Nov/16 2016 08:21 -0200 by Michael Granados) ==
 
 Features:
 
-  - exibindo versao do plugin
-  - persistindo dados no banco de dados
+* exibindo versao do plugin
+* persistindo dados no banco de dados
 
 == 0.11.0 (Nov/15 2016 22:27 -0200 by Michael Granados) ==
 
