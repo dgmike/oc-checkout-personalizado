@@ -62,6 +62,7 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
                 'text_edit',
                 'tab_geral', 'tab_api', 'tab_situacoes', 'tab_finalizacao',
 
+                // fields geral
                 'entry_total', 'help_total',
                 'entry_geo_zone', 'text_all_zones',
                 'entry_status', 'text_enabled', 'text_disabled',
@@ -146,7 +147,7 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
 
     private function loadSettingsData() {
         $settings = array(
-            'total',
+            'total', 'status', 'geo_zone_id', 'sort_order',
         );
         foreach ($settings as $setting) {
             $setting = self::MODIFICATION_CODE . '_' . $setting;
