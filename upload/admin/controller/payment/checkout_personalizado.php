@@ -9,7 +9,8 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
         $this
             ->setUp()
             ->breadcrumbsFor('index')
-            ->setDataFor('index');
+            ->setDataFor('index')
+            ->loadSettingsData();
 
         if ($this->isPost() && $this->validate()) {
             $this->savePostData();
@@ -28,8 +29,7 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
     }
 
     private function modification() {
-        $this->load->model('extension/modification');
-        $model = $this->model_extension_modification;
+        $model = $this->model('extension/modification');
         $data = $model->getModificationByCode(self::MODIFICATION_CODE);
         return (object) $data;
     }
@@ -50,34 +50,30 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
     private function setDataFor($action) {
         switch ($action) {
             case 'index':
-                $this->setData(
-                    array(
-                        'text_edit',
-                        'tab_geral', 'tab_api', 'tab_situacoes', 'tab_finalizacao',
-
-                        'entry_total', 'help_total',
-                        'entry_geo_zone', 'text_all_zones',
-                        'entry_status', 'text_enabled', 'text_disabled',
-                        'entry_sort_order',
-                    )
-                );
-                $this->setData('action', $this->linkTo('payment/checkout_personalizado'));
-
-                $this->load->model('localisation/geo_zone');
-                $this->setData(
-                    'geo_zones',
-                    $this->model_localisation_geo_zone->getGeoZones()
-                );
-
-                $this->load->model('localisation/order_status');
-                $this->setData(
-                    'order_statuses',
-                    $this->model_localisation_order_status->getOrderStatuses()
-                );
-
+                $this->setDataForIndex();
                 break;
         }
         return $this;
+    }
+
+    function setDataForIndex() {
+        $this->setData(
+            array(
+                'text_edit',
+                'tab_geral', 'tab_api', 'tab_situacoes', 'tab_finalizacao',
+
+                'entry_total', 'help_total',
+                'entry_geo_zone', 'text_all_zones',
+                'entry_status', 'text_enabled', 'text_disabled',
+                'entry_sort_order',
+            )
+        );
+        $this->setData('action', $this->linkTo('payment/checkout_personalizado'));
+
+        $this->setData('geo_zones', $this->model('localisation/geo_zone')->getGeoZones());
+        $this->setData(
+            'order_statuses', $this->model('localisation/order_status')->getOrderStatuses()
+        );
     }
 
     private function breadcrumb($title, $uri) {
@@ -101,6 +97,8 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
     }
 
     private function defaultData() {
+        $this->setData('modification_code', self::MODIFICATION_CODE);
+
         $this->setData('header', $this->load->controller('common/header'));
         $this->setData('column_left', $this->load->controller('common/column_left'));
         $this->setData('footer', $this->load->controller('common/footer'));
@@ -133,10 +131,30 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
         return $this->request->server['REQUEST_METHOD'] == 'POST';
     }
 
+    private function model($model) {
+        $this->load->model($model);
+        $node = 'model_' . str_replace('/', '_', $model);
+        return $this->$node;
+    }
+
     private function savePostData() {
         $this->load->model('setting/setting');
         $this->model_setting_setting->editSetting(self::MODIFICATION_CODE, $this->request->post);
         $this->session->data['success'] = $this->language->get('text_success');
-        $this->response->redirect($this->linkTo('extension/payment'));
+        $this->response->redirect($this->linkTo('payment/checkout_personalizado'));
+    }
+
+    private function loadSettingsData() {
+        $settings = array(
+            'total',
+        );
+        foreach ($settings as $setting) {
+            $setting = self::MODIFICATION_CODE . '_' . $setting;
+            if ($this->isPost() && isset($this->request->post[$setting])) {
+                $this->setData($setting, $this->request->post[$setting]);
+            } else {
+                $this->setData($setting, $this->config->get($setting));
+            }
+        }
     }
 }

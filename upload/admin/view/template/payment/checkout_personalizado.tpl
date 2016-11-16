@@ -4,7 +4,9 @@
 <div id="content">
   <div class="page-header">
     <div class="container-fluid">
-      <div class="pull-right"></div>
+      <div class="pull-right">
+        <button type="submit" form="form-checkout-personalizado" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-primary"><i class="fa fa-save"></i></button>
+      </div>
 
       <h1>
         <?php echo $heading_title; ?>
@@ -43,7 +45,7 @@
                   <span data-toggle="tooltip" title="<?php echo $help_total; ?>"><?php echo $entry_total; ?></span>
                 </label>
                 <div class="col-sm-10">
-                  <input type="text" name="checkout_personalizado_total" value="" placeholder="<?php echo $entry_total ?>" id="input-total" class="form-control" />
+                  <input type="text" name="<?php echo $modification_code; ?>_total" value="<?php echo $checkoutp_total ?>" placeholder="<?php echo $entry_total ?>" id="input-total" class="form-control" />
                 </div>
               </div>
 
