@@ -6,7 +6,10 @@
     <div class="container-fluid">
       <div class="pull-right"></div>
 
-      <h1><?php echo $heading_title; ?></h1>
+      <h1>
+        <?php echo $heading_title; ?>
+        <span class="badge"><?php echo $version; ?></span>
+      </h1>
 
       <ul class="breadcrumb">
         <?php foreach ($breadcrumbs as $breadcrumb): ?>

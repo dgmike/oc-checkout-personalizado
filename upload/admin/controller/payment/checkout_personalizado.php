@@ -1,6 +1,7 @@
 <?php
 
 class ControllerPaymentCheckoutPersonalizado extends Controller {
+    const MODIFICATION_CODE = 'checkoutp';
     public $data = array();
 
     public function index() {
@@ -27,7 +28,15 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
     private function setUp() {
         $this->defaultData();
         $this->document->setTitle($this->language->get('heading_title'));
+        $this->setData('version', $this->modification()->version);
         return $this;
+    }
+
+    private function modification() {
+        $this->load->model('extension/modification');
+        $model = $this->model_extension_modification;
+        $data = $model->getModificationByCode(self::MODIFICATION_CODE);
+        return (object) $data;
     }
 
     private function setData($key, $value = null) {
