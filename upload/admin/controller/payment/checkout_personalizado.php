@@ -4,27 +4,22 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
     const MODIFICATION_CODE = 'checkoutp';
     public $data = array();
 
+    // actions
     public function index() {
         $this
             ->setUp()
             ->breadcrumbsFor('index')
             ->setDataFor('index');
 
-        $this->load->model('localisation/geo_zone');
-        $this->setData(
-            'geo_zones',
-            $this->model_localisation_geo_zone->getGeoZones()
-        );
-
-        $this->load->model('localisation/order_status');
-        $this->setData(
-            'order_statuses',
-            $this->model_localisation_order_status->getOrderStatuses()
-        );
+        if ($this->isPost() && $this->validate()) {
+            $this->savePostData();
+            return;
+        }
 
         $this->view('payment/checkout_personalizado');
     }
 
+    // support methods
     private function setUp() {
         $this->defaultData();
         $this->document->setTitle($this->language->get('heading_title'));
@@ -67,6 +62,19 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
                     )
                 );
                 $this->setData('action', $this->linkTo('payment/checkout_personalizado'));
+
+                $this->load->model('localisation/geo_zone');
+                $this->setData(
+                    'geo_zones',
+                    $this->model_localisation_geo_zone->getGeoZones()
+                );
+
+                $this->load->model('localisation/order_status');
+                $this->setData(
+                    'order_statuses',
+                    $this->model_localisation_order_status->getOrderStatuses()
+                );
+
                 break;
         }
         return $this;
@@ -111,5 +119,24 @@ class ControllerPaymentCheckoutPersonalizado extends Controller {
     private function view($template) {
         $output = $this->load->view("${template}.tpl", $this->data);
         $this->response->setOutput($output);
+    }
+
+    private function validate() {
+        if (!$this->user->hasPermission('modify', 'payment/checkout_personalizado')) {
+            $this->error['warning'] = $this->language->get('error_permission');
+        }
+
+        return !$this->error;
+    }
+
+    private function isPost() {
+        return $this->request->server['REQUEST_METHOD'] == 'POST';
+    }
+
+    private function savePostData() {
+        $this->load->model('setting/setting');
+        $this->model_setting_setting->editSetting(self::MODIFICATION_CODE, $this->request->post);
+        $this->session->data['success'] = $this->language->get('text_success');
+        $this->response->redirect($this->linkTo('extension/payment'));
     }
 }
