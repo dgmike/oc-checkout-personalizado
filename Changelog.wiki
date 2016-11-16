@@ -1,14 +1,21 @@
+== 0.12.0 (Nov/16 2016 08:21 -0200 by Michael Granados) ==
+
+Features:
+
+  - exibindo versao do plugin
+  - persistindo dados no banco de dados
+
 == 0.11.0 (Nov/15 2016 22:27 -0200 by Michael Granados) ==
 
 Bugfixes:
 
-  - nome de variavel invalido
+* nome de variavel invalido
 
 Features:
 
-  - conversao de codigo fixo em elementos de traducao
-  - campos que fatavam para a tela de configuracoes gerais
-  - alternacao entre as abas
+* conversao de codigo fixo em elementos de traducao
+* campos que fatavam para a tela de configuracoes gerais
+* alternacao entre as abas
 
 == 0.10.0 (Nov/15 2016 19:28 -0200 by Michael Granados) ==
 
